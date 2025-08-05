@@ -1,6 +1,8 @@
 {
     "Macro Requirements": {
-        "Main Script Name": "GAG Macro.exe",
-        "Updater Name": "GAG Macro Updater.exe"
+        "Main Script File Name": "GAG Macro.exe",
+        "Updater File Name": "GAG Macro Updater.exe",
+        "Latest Macro Version": "0.0.0.1",
+        "Latest Updater Version": "0.0.0.1"
     }
 }
