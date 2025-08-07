@@ -4,7 +4,7 @@ from PyQt5.QtWidgets import QApplication, QMainWindow, QLabel, QHBoxLayout, QVBo
 from PyQt5.QtCore import Qt
 from appdirs import user_data_dir
 
-current_macro_version = "0.0.0.1"
+current_macro_version = "0.0.0.2"
 macro_requirements_url = "https://raw.githubusercontent.com/Mr-Bored-Board/Grow-A-Garden-Macro/main/Macro%20Requirements.json"
 github_release_url = "https://api.github.com/repos/Mr-Bored-Board/Grow-A-Garden-Macro/releases/latest"
 updater_url = github_release_url + "/download/GAG%20Macro%20Updater.exe"
