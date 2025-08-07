@@ -77,9 +77,6 @@ def update_macro():
             print(f"Socket error: {e}")
     sys.exit()
 
-check_if_updater_exists()
-check_for_updates()
-
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
@@ -109,6 +106,8 @@ class MainWindow(QMainWindow):
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
+    check_if_updater_exists()
+    check_for_updates()
     window = MainWindow()
     window.show()
     sys.exit(app.exec_())
