@@ -1,7 +1,7 @@
 import sys, socket, subprocess, os, requests
 from PyQt5.QtWidgets import QApplication, QMessageBox
 github_release_url = "https://api.github.com/repos/Mr-Bored-Board/Grow-A-Garden-Macro/releases/latest"
-main_macro_url = github_release_url + "/download/GAG%20Macro.exe"
+main_macro_url = github_release_url + "/download/GAG Macro.exe"
 
 def check_status():
     global main_macro_url

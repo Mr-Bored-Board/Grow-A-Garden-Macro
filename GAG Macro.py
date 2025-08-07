@@ -4,13 +4,13 @@ from PyQt5.QtWidgets import QApplication, QMainWindow, QLabel, QHBoxLayout, QVBo
 from PyQt5.QtCore import Qt
 from appdirs import user_data_dir
 
-current_macro_version = "0.0.0.2"
-macro_requirements_url = "https://raw.githubusercontent.com/Mr-Bored-Board/Grow-A-Garden-Macro/main/Macro%20Requirements.json"
+current_macro_version = "0.0.0.3"
+macro_requirements_url = "https://raw.githubusercontent.com/Mr-Bored-Board/Grow-A-Garden-Macro/main/Macro Requirements.json"
 github_release_url = "https://api.github.com/repos/Mr-Bored-Board/Grow-A-Garden-Macro/releases/latest"
-updater_url = github_release_url + "/download/GAG%20Macro%20Updater.exe"
+updater_url = github_release_url + "/download/GAG Macro Updater.exe"
 updater_location = os.path.join(user_data_dir("GAG Macro", "Bored Developments"), "GAG Macro Updater.exe")
 latest_macro_version = None
-
+print(updater_location)
 def show_exception_message(error, location=None):
     error_key = {404: f"{location} Not Found"}
     try:
@@ -29,10 +29,14 @@ def check_for_updates():
     try:
         response = requests.get(macro_requirements_url, timeout=5)
         if response.status_code == 200:
+            print("1")
             macro_requirements_json = json.loads(response.text)
             global latest_macro_version
+            print("2")
             latest_macro_version = macro_requirements_json["Macro Requirements"]["Latest Macro Version"]
+            print("3")
             if version.parse(latest_macro_version) > version.parse(current_macro_version):
+                print("4")
                 update_macro()
         else:
             QMessageBox.warning(None, "Error", "Failed to fetch requirements.json (HTTP {})".format(response.status_code))
@@ -43,23 +47,35 @@ def check_for_updates():
 
 def check_if_updater_exists():
     if os.path.exists(updater_location):
+        print("5")
         pass
     else:
+        print("6")
         create_updater()
 
 def create_updater():
     global updater_url, updater_location
+    print("7")
     try:
         response = requests.get(updater_url, timeout=3)
+        print("8")
         if response.status_code == 200:
+            print("9")
             os.makedirs(os.path.dirname(updater_location), exist_ok=True)
+            print("10")
             with open(updater_location, "wb") as f:
+                print("11")
                 f.write(response.content)
+                print("12")
+            print("13")
             return True
         else:
-            show_exception_message(404)
+            print("14")
+            show_exception_message(response.status_code)
+            print("15")
             return False
     except Exception as e:
+        print("16")
         show_exception_message(e)
         return False
 
